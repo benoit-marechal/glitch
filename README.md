@@ -68,3 +68,9 @@ Conservez le nom de projet `billeterie` pour retrouver les mêmes volumes. N’e
 ## Visuels
 
 Les trois illustrations du festival sont des SVG originaux et éditables. La [provenance de l’habillage](docs/habillage-festival.md) décrit leurs sources et les paramètres de simulation. Aucune programmation, salle, date de vente ou transaction réelle n’est annoncée par cette application.
+
+## Licence
+
+Le code et les illustrations SVG originales de la version courante sont distribués sous la [GNU GPL version 3](LICENSE), sans option de version ultérieure (`GPL-3.0-only`). Copyright (C) 2026 Benoit Maréchal.
+
+Les logiciels utilisés par les images Docker conservent leurs licences respectives. Les anciennes photographies retirées, encore présentes dans l’historique, ne sont pas couvertes par cette attribution de licence.
