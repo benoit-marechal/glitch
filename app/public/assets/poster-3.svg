@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540" role="img">
+  <defs><linearGradient id="s" x2=".3" y2="1"><stop stop-color="#ffb9cd"/><stop offset="1" stop-color="#f987ae"/></linearGradient><linearGradient id="r" x2="1" y2="1"><stop stop-color="#bda1f4"/><stop offset="1" stop-color="#5e4b99"/></linearGradient><pattern id="l" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0h8" stroke="#542748" stroke-opacity=".13"/></pattern></defs>
+  <rect width="500" height="540" fill="url(#s)"/>
+  <circle cx="262" cy="208" r="110" fill="#fff0ba"/>
+  <g stroke="#613e7c" fill="none" stroke-width="2.5"><path d="M-20 297Q91 225 216 298T520 282"/><path d="M-20 311Q91 239 216 312T520 296"/><path d="M-20 325Q91 253 216 326T520 310"/><path d="M-20 339Q91 267 216 340T520 324"/><path d="M-20 353Q91 281 216 354T520 338"/><path d="M-20 367Q91 295 216 368T520 352"/></g>
+  <path d="M-15 283C95 345 128 159 259 229S401 374 515 207L515 290C410 460 336 289 250 287S91 423-15 347Z" fill="url(#r)"/>
+  <path d="M-15 283C95 345 128 159 259 229S401 374 515 207" fill="none" stroke="#382954" stroke-width="2"/>
+  <g fill="#6c4486"><path d="m104 116 5 16 17 5-17 5-5 16-5-16-16-5 16-5Z"/><path d="m415 176 3 9 10 4-10 3-3 10-4-10-9-3 9-4Z"/></g>
+  <text x="28" y="447" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="83" letter-spacing="-5" fill="#4b2d68">MIRA</text><text x="28" y="510" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="74" letter-spacing="-4" fill="#4b2d68">SOL</text>
+  <text x="468" y="515" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#4b2d68" text-anchor="end">RÉSONANCE / 03</text>
+  <rect width="500" height="540" fill="url(#l)"/>
+</svg>

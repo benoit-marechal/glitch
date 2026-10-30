@@ -1,0 +1,192 @@
+name: billeterie
+
+x-etcd: &etcd
+  image: quay.io/coreos/etcd:v3.5.21@sha256:a3ccd299377af4b9968d8cbaaf9722fe354297f11908f74a846075e1e5f4ee89
+  restart: unless-stopped
+  networks: [database]
+  environment: &etcd-environment
+    ETCD_DATA_DIR: /etcd-data
+    ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+    ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+    ETCD_INITIAL_CLUSTER: etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+    ETCD_INITIAL_CLUSTER_TOKEN: festival-etcd
+    ETCD_INITIAL_CLUSTER_STATE: new
+    ETCD_LOG_LEVEL: warn
+  healthcheck:
+    test: [CMD, /usr/local/bin/etcdctl, --endpoints=http://127.0.0.1:2379, endpoint, health]
+    interval: 5s
+    timeout: 3s
+    retries: 15
+    start_period: 10s
+
+x-postgres: &postgres
+  image: billeterie-postgres:16-patroni4.1.0
+  build:
+    context: .
+    dockerfile: infra/postgres/Dockerfile
+  restart: unless-stopped
+  stop_grace_period: 30s
+  shm_size: 128mb
+  networks: [database]
+  secrets: [superuser_password, replication_password]
+  depends_on:
+    etcd1: {condition: service_healthy}
+    etcd2: {condition: service_healthy}
+    etcd3: {condition: service_healthy}
+  healthcheck:
+    test: [CMD, curl, --fail, --silent, http://127.0.0.1:8008/health]
+    interval: 5s
+    timeout: 3s
+    retries: 24
+    start_period: 30s
+
+x-sql: &sql
+  image: haproxy:3.0.11-bookworm
+  restart: unless-stopped
+  networks: [queries, database]
+  volumes:
+    - ./infra/haproxy/sql.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+  depends_on:
+    pg1: {condition: service_healthy}
+    pg2: {condition: service_healthy}
+    pg3: {condition: service_healthy}
+
+x-web: &web
+  image: billeterie-app:php8.3
+  build:
+    context: .
+    dockerfile: app/Dockerfile
+  restart: unless-stopped
+  networks: [frontend, queries]
+  secrets: [app_password, admin_token]
+  environment: &web-environment
+    DB_PORT: '5432'
+    DB_NAME: festival
+    DB_USER: festival_app
+    DB_PASSWORD_FILE: /run/secrets/app_password
+    ADMIN_TOKEN_FILE: /run/secrets/admin_token
+  healthcheck:
+    test: [CMD, php, -r, "exit(@file_get_contents('http://127.0.0.1/livez') === false ? 1 : 0);"]
+    interval: 5s
+    timeout: 3s
+    retries: 10
+    start_period: 10s
+
+services:
+  etcd1:
+    <<: *etcd
+    environment:
+      <<: *etcd-environment
+      ETCD_NAME: etcd1
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd1:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd1:2380
+    volumes: [etcd1-data:/etcd-data]
+
+  etcd2:
+    <<: *etcd
+    environment:
+      <<: *etcd-environment
+      ETCD_NAME: etcd2
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd2:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd2:2380
+    volumes: [etcd2-data:/etcd-data]
+
+  etcd3:
+    <<: *etcd
+    environment:
+      <<: *etcd-environment
+      ETCD_NAME: etcd3
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd3:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd3:2380
+    volumes: [etcd3-data:/etcd-data]
+
+  pg1:
+    <<: *postgres
+    environment:
+      PATRONI_NAME: pg1
+      PATRONI_RESTAPI_CONNECT_ADDRESS: pg1:8008
+      PATRONI_POSTGRESQL_CONNECT_ADDRESS: pg1:5432
+    volumes: [pg1-data:/var/lib/postgresql/data]
+
+  pg2:
+    <<: *postgres
+    environment:
+      PATRONI_NAME: pg2
+      PATRONI_RESTAPI_CONNECT_ADDRESS: pg2:8008
+      PATRONI_POSTGRESQL_CONNECT_ADDRESS: pg2:5432
+    volumes: [pg2-data:/var/lib/postgresql/data]
+
+  pg3:
+    <<: *postgres
+    environment:
+      PATRONI_NAME: pg3
+      PATRONI_RESTAPI_CONNECT_ADDRESS: pg3:8008
+      PATRONI_POSTGRESQL_CONNECT_ADDRESS: pg3:5432
+    volumes: [pg3-data:/var/lib/postgresql/data]
+
+  sql1:
+    <<: *sql
+
+  sql2:
+    <<: *sql
+
+  web1:
+    <<: *web
+    environment:
+      <<: *web-environment
+      DB_HOST: sql1
+      APP_NODE: web1
+    depends_on:
+      sql1: {condition: service_started}
+
+  web2:
+    <<: *web
+    environment:
+      <<: *web-environment
+      DB_HOST: sql2
+      APP_NODE: web2
+    depends_on:
+      sql2: {condition: service_started}
+
+  lb:
+    image: haproxy:3.0.11-bookworm
+    restart: unless-stopped
+    networks: [frontend]
+    ports: ['127.0.0.1:8088:8080']
+    volumes:
+      - ./infra/haproxy/http.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      web1: {condition: service_healthy}
+      web2: {condition: service_healthy}
+
+  bootstrap:
+    profiles: [setup]
+    image: billeterie-postgres:16-patroni4.1.0
+    entrypoint: [/bin/sh, /bootstrap/bootstrap.sh]
+    restart: 'no'
+    networks: [queries]
+    secrets: [superuser_password, app_password]
+    volumes:
+      - ./infra/bootstrap/bootstrap.sh:/bootstrap/bootstrap.sh:ro
+      - ./database/schema.sql:/bootstrap/schema.sql:ro
+    depends_on:
+      sql1: {condition: service_started}
+
+networks:
+  frontend: {}
+  queries: {internal: true}
+  database: {internal: true}
+
+volumes:
+  etcd1-data: {}
+  etcd2-data: {}
+  etcd3-data: {}
+  pg1-data: {}
+  pg2-data: {}
+  pg3-data: {}
+
+secrets:
+  superuser_password: {file: ./.secrets/superuser_password}
+  replication_password: {file: ./.secrets/replication_password}
+  app_password: {file: ./.secrets/app_password}
+  admin_token: {file: ./.secrets/admin_token}

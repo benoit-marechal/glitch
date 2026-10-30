@@ -1,0 +1,11 @@
+.secrets
+.env
+.env.*
+.env
+.env.*
+.git
+node_modules
+reports
+docs
+.DS_Store
+._*

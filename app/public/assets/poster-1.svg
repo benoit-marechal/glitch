@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540" role="img">
+  <defs><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b9a2f1"/><stop offset="1" stop-color="#7e5eb3"/></linearGradient><radialGradient id="orb"><stop stop-color="#ffb2ce"/><stop offset=".65" stop-color="#ff7caf"/><stop offset="1" stop-color="#e53f86"/></radialGradient><pattern id="lines" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 0h7" stroke="#1c1737" stroke-opacity=".15"/></pattern></defs>
+  <rect width="500" height="540" fill="url(#p)"/>
+  <g stroke="#31233e" fill="none" stroke-width="1.5" opacity=".7"><ellipse cx="257" cy="262" rx="216" ry="188" transform="rotate(-30 257 262)"/><ellipse cx="257" cy="262" rx="202" ry="177" transform="rotate(-30 257 262)"/><ellipse cx="257" cy="262" rx="188" ry="165" transform="rotate(-30 257 262)"/></g>
+  <circle cx="255" cy="258" r="135" fill="url(#orb)"/>
+  <ellipse cx="255" cy="258" rx="215" ry="45" fill="none" stroke="#ddff68" stroke-width="13" transform="rotate(-30 255 258)"/>
+  <path d="m254 120-75 141h67l-18 113 103-160h-73l34-94Z" fill="#ddff68"/>
+  <g fill="#f4ecff"><path d="m410 89 6 18 18 6-18 6-6 18-6-18-18-6 18-6Z"/><circle cx="90" cy="354" r="4"/><path d="m77 173 3 9 10 3-10 3-3 10-3-10-9-3 9-3Z"/></g>
+  <text x="28" y="434" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="62" letter-spacing="-4" fill="#24152d">NOVA &amp;</text><text x="28" y="494" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="65" letter-spacing="-4" fill="#24152d">LUNAR</text>
+  <text x="468" y="515" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#291a35" text-anchor="end">RÉSONANCE / 01</text>
+  <rect width="500" height="540" fill="url(#lines)"/>
+</svg>

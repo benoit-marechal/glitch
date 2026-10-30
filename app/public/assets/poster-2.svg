@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540" role="img">
+  <defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#ddff68"/><stop offset="1" stop-color="#b6d94e"/></linearGradient><pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#284035" opacity=".17"/></pattern></defs>
+  <rect width="500" height="540" fill="url(#g)"/>
+  <g fill="none" stroke="#25553e" stroke-width="3"><path d="M-50 350C40 340 20 75 250 94S440 347 550 330"/><path d="M-50 363C40 353 26 91 250 110S434 360 550 343"/><path d="M-50 376C40 366 32 107 250 126S428 373 550 356"/><path d="M-50 389C40 379 38 123 250 142S422 386 550 369"/><path d="M-50 402C40 392 44 139 250 158S416 399 550 382"/><path d="M-50 415C40 405 50 155 250 174S410 412 550 395"/><path d="M-50 428C40 418 56 171 250 190S404 425 550 408"/><path d="M-50 441C40 431 62 187 250 206S398 438 550 421"/></g>
+  <circle cx="253" cy="262" r="81" fill="#ff916f"/><g fill="#28533d"><path d="m253 190 12 47 41-25-24 42 47 10-47 12 24 41-41-24-12 47-11-47-42 24 25-41-47-12 47-10-25-42 42 25Z"/><circle cx="253" cy="264" r="22" fill="#ddff68"/></g>
+  <text x="28" y="450" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="72" letter-spacing="-5" fill="#214b36">ORION</text><text x="28" y="509" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="67" letter-spacing="-4" fill="#214b36">CLUB</text>
+  <text x="468" y="515" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#214b36" text-anchor="end">RÉSONANCE / 02</text>
+  <rect width="500" height="540" fill="url(#dots)"/>
+</svg>
