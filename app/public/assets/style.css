@@ -104,11 +104,10 @@ h2 { font-family: var(--display); font-size: clamp(40px, 5.3vw, 66px); line-heig
 .event-art { position: relative; overflow: hidden; background: #14151b; aspect-ratio: 1 / 1.08; border: 1px solid #3a3b43; }
 .event-art > img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* Les cadrages isolent les affiches du triptyque sans transformer les originaux PDF. */
-.event-art > .poster-arts, .event-art > .poster-club { position: absolute; width: 365.7%; max-width: none; height: auto; top: -40%; object-fit: initial; }
-.event-art > .poster-arts { left: -26.8%; }
-.event-art > .poster-club { left: -132.1%; }
-/* Le bas de l'affiche de référence annonce un lieu et un samedi d'une autre édition. */
-.event-art > .poster-code { position: absolute; width: 350%; max-width: none; height: auto; top: -10%; left: -45%; object-fit: initial; }
+.event-art > .poster-arts, .event-art > .poster-club { position: absolute; width: 300%; max-width: none; height: 100%; top: 0; object-fit: cover; }
+.event-art > .poster-arts { left: 0; }
+.event-art > .poster-club { left: -100%; }
+.event-art > .poster-code { object-position: 50% 50%; }
 .day-badge { position: absolute; left: 13px; top: 13px; border: 1px solid var(--acid); background: #08090cf2; color: var(--acid); font-family: monospace; font-size: 10px; letter-spacing: .3px; padding: 9px 11px; font-weight: 700; }
 .genre { display: block; font-family: monospace; font-size: 9px; font-weight: 400; color: var(--cyan); letter-spacing: .4px; margin: 20px 0 10px; }
 .event-card h3 { font-family: var(--display); font-size: 36px; font-weight: 900; letter-spacing: -.7px; line-height: 1; margin: 0 0 8px; }

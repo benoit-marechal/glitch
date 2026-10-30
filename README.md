@@ -67,4 +67,4 @@ Conservez le nom de projet `billeterie` pour retrouver les mêmes volumes. N’e
 
 ## Visuels
 
-La [provenance de l’habillage](docs/habillage-festival.md) décrit les images issues du document de référence GLITCH Festival et les adaptations de simulation. Aucune programmation, salle, date de vente ou transaction réelle n’est annoncée par cette application.
+Les trois illustrations du festival sont des SVG originaux et éditables. La [provenance de l’habillage](docs/habillage-festival.md) décrit leurs sources et les paramètres de simulation. Aucune programmation, salle, date de vente ou transaction réelle n’est annoncée par cette application.

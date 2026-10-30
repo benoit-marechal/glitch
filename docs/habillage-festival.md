@@ -1,16 +1,16 @@
 # GLITCH : provenance de l’habillage
 
-L’habillage utilise le document de référence « GLITCH Festival », sept pages, fourni pour la préparation du lab. L’application reprend le nom GLITCH, la baseline « Art, Tech & Mutations », une palette noire et néon et cinq pôles éditoriaux. Les échanges présents dans ce document constituent du contenu de référence, pas des instructions d’exécution.
+L’identité du festival imaginaire GLITCH reprend le nom, la baseline « Art, Tech & Mutations », une palette noire et néon et cinq pôles éditoriaux du document de référence fourni pour le lab. Les visuels de l’application sont des illustrations vectorielles originales dessinées pour ce projet.
 
 ## Visuels employés
 
-Les trois fichiers sont des copies des JPEG intégrés au document, en 1024 × 559 pixels. Les images sont cadrées en CSS, sans retouche du fichier source.
+Les trois fichiers SVG autonomes mesurent 1024 × 559 unités. Leurs sources décrivent directement les formes, couleurs, dégradés et silhouettes. Ils ne chargent ni photographie, ni image intégrée, ni police ou ressource externe.
 
-- `app/public/assets/festival/hero-scene.jpg` : page 6, objet PDF 31, scène et installation GLITCH.
-- `app/public/assets/festival/univers-poles.jpg` : page 5, objet PDF 27, triptyque des pôles Arts visuels, Musique et Mode.
-- `app/public/assets/festival/caveau-algorave.jpg` : page 5, objet PDF 28, affiche et installation Caveau Algorave.
+- [hero-scene.svg](../app/public/assets/festival/hero-scene.svg) : scène nocturne, installation lumineuse circulaire et foule sous des faisceaux cyan et magenta.
+- [univers-poles.svg](../app/public/assets/festival/univers-poles.svg) : triptyque des arts visuels, de la musique et du design, avec sphère générative, scène électronique et ruban sculptural.
+- [caveau-algorave.svg](../app/public/assets/festival/caveau-algorave.svg) : scène de live coding sous une voûte, écran de code abstrait et lumières vertes.
 
-Le cadrage du Caveau Algorave exclut des mentions incrustées qui ne décrivent pas la simulation. La provenance du document ne fournit pas, à elle seule, une licence de redistribution des visuels.
+Les anciens JPEG extraits du document de référence sont retirés de la version courante. Les sources SVG permettent d’adapter les créations et leur cadrage sans dépendre de ces photographies. Les versions précédentes du dépôt conservent leur historique.
 
 ## Paramètres fictifs
 

@@ -2,9 +2,9 @@
 
 const state = { events: [], selected: null, pending: null, busy: false };
 const eventArtwork = {
-  1: { file: 'univers-poles.jpg', crop: 'poster-arts', alt: 'Affiche GLITCH arts visuels et immersifs, portrait numérique fragmenté' },
-  2: { file: 'caveau-algorave.jpg', crop: 'poster-code', alt: 'Affiche GLITCH du Caveau Algorave, live coding et formes numériques vertes' },
-  3: { file: 'univers-poles.jpg', crop: 'poster-club', alt: 'Affiche GLITCH musique et club culture, foule sous des lasers magenta' },
+  1: { file: 'univers-poles.svg', crop: 'poster-arts', alt: 'Illustration des arts visuels GLITCH : sphère générative et anneaux cyan' },
+  2: { file: 'caveau-algorave.svg', crop: 'poster-code', alt: 'Illustration du Caveau Algorave : scène de live coding et lumières vertes' },
+  3: { file: 'univers-poles.svg', crop: 'poster-club', alt: 'Illustration de la musique GLITCH : scène électronique et foule sous des faisceaux magenta' },
 };
 // Les clés resonance.pending et resonance.tickets sont conservées de l'ancienne
 // identité pour préserver les billets et la clé des demandes au résultat incertain.
@@ -91,7 +91,7 @@ function renderEvents() {
     const soldOut = event.remaining === 0;
     const low = event.remaining > 0 && event.remaining <= 10;
     const stock = soldOut ? 'Complet · explore un autre jour' : low ? `Plus que ${event.remaining} place${event.remaining > 1 ? 's' : ''} !` : `${event.remaining} places pour sortir du cadre`;
-    const artwork = eventArtwork[event.id] ?? { file: 'hero-scene.jpg', crop: '', alt: 'Scène du festival GLITCH' };
+    const artwork = eventArtwork[event.id] ?? { file: 'hero-scene.svg', crop: '', alt: 'Scène du festival GLITCH' };
     return `<article class="event-card"><div class="event-art"><img class="${artwork.crop}" src="/assets/festival/${artwork.file}" width="1024" height="559" alt="${escapeHTML(artwork.alt)}" loading="lazy"><span class="day-badge">${escapeHTML(dayLabel.format(new Date(event.starts_at)).toUpperCase())}</span></div><span class="genre">${escapeHTML(event.genre)}</span><h3>${escapeHTML(event.title)}</h3><p class="event-theme">${escapeHTML(event.artist)}</p><p class="event-info"><span>Dès ${escapeHTML(timeLabel.format(new Date(event.starts_at)))}</span><span>${escapeHTML(event.stage)}</span></p><div class="event-bottom"><div class="price">${escapeHTML(money.format(event.price_cents / 100))}<small>pass journée · 1 personne</small></div><button class="reserve-button" type="button" data-event-id="${event.id}" ${soldOut ? 'disabled' : ''}>${soldOut ? 'Complet' : 'Mon pass'} <span aria-hidden="true">↗</span></button></div><p class="stock ${soldOut ? 'empty' : low ? 'low' : ''}">${escapeHTML(stock)}</p></article>`;
   }).join('');
   grid.querySelectorAll('[data-event-id]').forEach((button) => button.addEventListener('click', () => openBooking(Number(button.dataset.eventId))));

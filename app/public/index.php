@@ -41,7 +41,7 @@ header('Cache-Control: no-store');
                 <p class="hero-note">Festival de démonstration · Paiement simulé</p>
             </div>
             <div class="hero-art">
-                <img src="/assets/festival/hero-scene.jpg" alt="Scène GLITCH : un portrait numérique fragmenté au-dessus de la foule, traversé de lasers cyan et magenta" width="1024" height="559" fetchpriority="high">
+                <img src="/assets/festival/hero-scene.svg" alt="Illustration de la scène GLITCH : installation circulaire lumineuse et foule sous des faisceaux cyan et magenta" width="1024" height="559" fetchpriority="high">
                 <div class="hero-stamp" aria-hidden="true"><span>SYSTEM ERROR</span><strong>PANIQUE<br>CRÉATIVE</strong><span>PARIS / 2027</span></div>
                 <div class="hero-coordinate"><span>ART + TECH + MUTATIONS</span><strong>SORTEZ DU CADRE.</strong></div>
             </div>
@@ -51,7 +51,7 @@ header('Cache-Control: no-store');
 
         <section id="univers" class="universe wrap" aria-labelledby="universe-title">
             <div class="section-heading"><div><p class="eyebrow">LE FESTIVAL HORS FORMAT</p><h2 id="universe-title">Cinq pôles.<br>Aucune case<span>.</span></h2></div><p class="section-intro">La création déborde.<br>On lui laisse toute la place.</p></div>
-            <figure class="universe-visual"><img src="/assets/festival/univers-poles.jpg" alt="Trois affiches GLITCH pour les arts visuels et immersifs, la musique et la club culture, la mode et le design" width="1024" height="559" loading="lazy"><figcaption>ARTS VISUELS / MUSIQUE / MODE / CODE / IDÉES</figcaption></figure>
+            <figure class="universe-visual"><img src="/assets/festival/univers-poles.svg" alt="Trois illustrations GLITCH : sphère générative cyan, scène musicale magenta et ruban de design vert acide" width="1024" height="559" loading="lazy"><figcaption>ARTS VISUELS / MUSIQUE / MODE / CODE / IDÉES</figcaption></figure>
             <div class="poles-grid">
                 <article class="pole pole-cyan"><span class="pole-index">01 / ARTS VISUELS &amp; IMMERSIFS</span><h3>Le futur<br>distordu.</h3><p>Génératif en live, réalité augmentée et sculptures postdigitales. Des images qui changent de dimension.</p><span class="pole-tag">L’IMAGE SORT DE L’ÉCRAN ↗</span></article>
                 <article class="pole pole-pink"><span class="pole-index">02 / MUSIQUE &amp; CLUB CULTURE</span><h3>Les marges<br>électroniques.</h3><p>Ambient, IDM, hyperpop, techno industrielle et lives audiovisuels. Les sons qui déplacent les lignes.</p><span class="pole-tag">LE CORPS PREND LE RELAIS ↗</span></article>
